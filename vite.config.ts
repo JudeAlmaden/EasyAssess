@@ -7,8 +7,13 @@ import { defineConfig } from 'vite';
 export default defineConfig({
     plugins: [
         laravel({
-            input: ['resources/js/app.ts'],
+            input: [
+                'resources/js/app.ts',
+                'resources/css/app.css',
+                'resources/js/app.js'
+            ],
             ssr: 'resources/js/ssr.ts',
+            
             refresh: true,
         }),
         tailwindcss(),
@@ -21,6 +26,9 @@ export default defineConfig({
             },
         }),
     ],
+    define: {
+        global: 'globalThis',
+    },
     resolve: {
         alias: {
             '@': path.resolve(__dirname, './resources/js'),

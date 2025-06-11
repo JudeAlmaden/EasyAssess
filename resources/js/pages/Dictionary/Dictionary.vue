@@ -1,7 +1,7 @@
 <script setup lang="ts">
 
 import { ref, onMounted } from 'vue';
-
+import { Eye } from 'lucide-vue-next'
 import AppLayout from '@/layouts/AppLayout.vue';
 import { type BreadcrumbItem } from '@/types';
 import { Input } from '../../components/ui/input';
@@ -119,6 +119,18 @@ function onConfirm() {
 function onCancel() {
     console.log('Modal cancelled')
 }
+
+function formatDate(iso: string) {
+  const date = new Date(iso)
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+  })
+}
+
 </script>
 
 
@@ -150,12 +162,15 @@ function onCancel() {
                                 <TableCell class="font-medium">{{ dictionary.name }}</TableCell>
                                 <TableCell>{{ dictionary.description }}</TableCell>
                                 <TableCell>{{ dictionary.member_count }}</TableCell>
-                                <TableCell class="text-right">{{ dictionary.created_at }}</TableCell>
-                                <TableCell class="text-center">
-                                    <Button
-                                        class="px-3 py-1 text-sm bg-blue-600 text-white rounded-md hover:bg-blue-700">
-                                        View
-                                    </Button>
+                                <TableCell class="text-right">{{ formatDate(dictionary.created_at) }}</TableCell>
+                                <TableCell class="text-center w-1/4">
+                                    <div class="flex justify-center items-center">
+                                        <Button
+                                            class="px-3 py-1 text-sm w-32 bg-blue-600 text-white hover:bg-blue-700 flex items-center gap-1">
+                                            View
+                                            <Eye class="w-4 h-4" />
+                                        </Button>
+                                    </div>
                                 </TableCell>
                             </TableRow>
                         </TableBody>

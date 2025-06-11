@@ -1,43 +1,39 @@
 <script setup lang="ts">
 
 import { ref, onMounted } from 'vue';
-
+import { Eye } from 'lucide-vue-next'
 import AppLayout from '@/layouts/AppLayout.vue';
 import { type BreadcrumbItem } from '@/types';
 import { Input } from '../../components/ui/input';
 import { Button } from '../../components/ui/button';
 import { Card, CardContent, CardHeader, } from '@/components/ui/card';
-import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow, } from '@/components/ui/table';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow, } from '@/components/ui/table';
 import { BaseModal } from '../../components/ui/modal'
+import { Link } from '@inertiajs/vue3';
 
 const showModal = ref(false)
-const groupName = ref('')
-const groupDesc = ref('')
+const QuestionnaireName = ref('')
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
-        title: 'Person Dictionary',
-        href: '/dictionary',
+        title: 'Your OMR Sheets',
+        href: '/OMR Sheets',
     },
 ];
 
-interface Dictionary {
+//Rename
+interface OmrSheet {
     id: number
-    name: string
-    description: string
-    member_count: number
+    owner_id: number
+    title: string
+    sections: any[] // or a more specific type if you know the shape
+    html_content: string
     created_at: string
+    updated_at: string
 }
 
-const dictionaries = ref<Dictionary[]>([
-    {
-        id: 0,
-        name: '',
-        description: '',
-        member_count: 0,
-        created_at: '',
-    }
-])
+const Questionnaires = ref<OmrSheet[]>([])
+
 
 function getCsrfToken(): string {
     const metaTag = document.querySelector('meta[name="csrf-token"]') as HTMLMetaElement | null;
@@ -56,9 +52,9 @@ function getCsrfToken(): string {
 }
 
 //Queries
-async function fetchDictionaries() {
+async function fetchQuestionnaires() {
     try {
-        const res = await fetch('/api/user/dictionaries/get', {
+        const res = await fetch('api/questionnaires/get', {
             headers: {
                 'Accept': 'application/json',
             },
@@ -68,35 +64,32 @@ async function fetchDictionaries() {
         if (!res.ok) throw new Error('Failed to fetch dictionaries');
 
         const data = await res.json();
-        dictionaries.value = data.dictionaries;
+        Questionnaires.value = data.OMRSheets;
+
     } catch (error) {
         console.error('Error fetching dictionaries:', error);
     }
 }
 
-async function createDictionary(name: string, description: string) {
+async function createDictionary(name: string) {
     try {
         const csrfToken = getCsrfToken();
-        const res = await fetch('/api/user/dictionaries/create', {
+        //change this
+        const res = await fetch('api/questionnaires/create', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': csrfToken, // Include token here
+                'X-CSRF-TOKEN': csrfToken,
             },
             credentials: 'include',
             body: JSON.stringify({
-                name,
-                description
+                title: name
             })
         });
 
-        // if (!res.ok) throw new Error('Failed to create dictionary');
-
-        const data = await res.json();
-        console.log(data);
-        // Optionally refresh the list after creating
-        fetchDictionaries();
+        if (!res.ok) throw new Error('Failed to create OMR Sheet');
+        fetchQuestionnaires();
     } catch (error) {
         console.error('Error fetching dictionaries:', error);
     }
@@ -104,7 +97,7 @@ async function createDictionary(name: string, description: string) {
 
 //Get initial data
 onMounted(() => {
-    fetchDictionaries();
+    fetchQuestionnaires();
 });
 
 //Open, Close, Confirm Modal
@@ -113,13 +106,26 @@ function openModal() {
 }
 
 function onConfirm() {
-    createDictionary(groupName.value, groupDesc.value);
+    createDictionary(QuestionnaireName.value);
 }
 
 function onCancel() {
     console.log('Modal cancelled')
 }
+
+function formatDate(iso: string) {
+    const date = new Date(iso)
+    return date.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+    })
+}
+
 </script>
+
 
 
 <template>
@@ -128,34 +134,33 @@ function onCancel() {
             <Card>
                 <CardHeader>
                     <div class="flex gap-2 items-center">
-                        <Input placeholder="Search person..." />
+                        <Input placeholder="Search OMR Sheet..." />
                         <Button>Search</Button>
                         <Button @click="openModal">Create</Button>
                     </div>
                 </CardHeader>
+                <Link :href="route('questionnaire.make')" target="_blank">Open in New Tab</Link>
                 <CardContent>
                     <Table>
-                        <TableCaption>A list of your Person Groups</TableCaption>
                         <TableHeader>
                             <TableRow>
-                                <TableHead class="w-[180px]">Group Name</TableHead>
-                                <TableHead>Description</TableHead>
-                                <TableHead>Members</TableHead>
-                                <TableHead class="text-right">Created At</TableHead>
-                                <TableHead class="text-center">Actions</TableHead>
+                                <TableHead class="w-1/2">Title</TableHead>
+                                <TableHead class="w-1/4 text-right">Created At</TableHead>
+                                <TableHead class="w-1/4 text-center">Actions</TableHead>
                             </TableRow>
                         </TableHeader>
                         <TableBody>
-                            <TableRow v-for="dictionary in dictionaries" :key="dictionary.id">
-                                <TableCell class="font-medium">{{ dictionary.name }}</TableCell>
-                                <TableCell>{{ dictionary.description }}</TableCell>
-                                <TableCell>{{ dictionary.member_count }}</TableCell>
-                                <TableCell class="text-right">{{ dictionary.created_at }}</TableCell>
-                                <TableCell class="text-center">
-                                    <Button
-                                        class="px-3 py-1 text-sm bg-blue-600 text-white rounded-md hover:bg-blue-700">
-                                        View
-                                    </Button>
+                            <TableRow v-for="Questionnaire in Questionnaires" :key="Questionnaire.id">
+                                <TableCell class="font-medium w-1/2">{{ Questionnaire.title }}</TableCell>
+                                <TableCell class="text-right w-1/4">{{ formatDate(Questionnaire.created_at) }}</TableCell>
+                                <TableCell class="text-center w-1/4">
+                                    <div class="flex justify-center items-center">
+                                        <Button
+                                            class="px-3 py-1 text-sm w-32 bg-blue-600 text-white hover:bg-blue-700 flex items-center gap-1">
+                                            View
+                                            <Eye class="w-4 h-4" />
+                                        </Button>
+                                    </div>
                                 </TableCell>
                             </TableRow>
                         </TableBody>
@@ -165,19 +170,13 @@ function onCancel() {
         </div>
 
         <!-- Modal -->
-        <BaseModal v-model="showModal" title="Create New Group" @confirm="onConfirm" @cancel="onCancel">
+        <BaseModal v-model="showModal" title="Create New OMR Sheet" @confirm="onConfirm" @cancel="onCancel">
             <div>
                 <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                    Group Name
+                    Questionnaire Name
                 </label>
-                <input v-model="groupName" type="text" placeholder="Enter group name"
+                <input v-model="QuestionnaireName" type="text" placeholder="Ex. Prelim Examination Layout"
                     class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:focus:ring-blue-500 dark:bg-gray-700 dark:text-white transition-colors mb-4" />
-
-                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                    Description
-                </label>
-                <textarea v-model="groupDesc" placeholder="Optional description" rows="3"
-                    class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:focus:ring-blue-500 dark:bg-gray-700 dark:text-white transition-colors"></textarea>
             </div>
         </BaseModal>
     </AppLayout>
