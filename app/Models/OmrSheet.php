@@ -10,16 +10,17 @@ class OmrSheet extends Model
     use HasFactory;
 
     protected $table = 'omr_sheets';
-
     protected $fillable = [
         'owner_id',
         'title',
-        'sections',
+        'paper_size',
+        'description',
+        'json_data',
         'html_content',
     ];
 
     protected $casts = [
-        'sections' => 'array',
+        'json_data' => 'array',
     ];
 
     /**

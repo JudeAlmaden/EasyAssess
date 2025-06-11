@@ -20,7 +20,7 @@ return new class extends Migration
             
             $table->string('title')->nullable();               
             $table->text('description')->nullable();          
-            $table->json('correct_Answers')->nullable();
+            $table->json('correct_answers')->nullable();
             $table->json('results')->nullable();                
 
             $table->foreignId('created_by')->nullable()->constrained('users')->onDelete('set null');

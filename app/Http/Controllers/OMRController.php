@@ -19,20 +19,25 @@ class OMRController extends Controller
     {
         $validated = $request->validate([
             'title' => 'required|string|max:255',
-            'sections' => 'nullable|array',
-            'html_content' => 'nullable|string',
+            'description' => 'nullable|string',
+            'paper_size'=> 'required|string',
+            'HTML' => 'required|string',
+            'fileJSON' => 'required|json',
         ]);
 
-        $omrSheet = OmrSheet::create([
+        
+        OmrSheet::create([
             'owner_id' => $request->user()->id,
             'title' => $validated['title'],
-            'sections' => $validated['sections'] ?? [],
-            'html_content' => $validated['html_content'] ?? '',
+            "paper_size" => $validated ['paper_size'],
+            'json_data' => json_decode($validated['fileJSON'], true), 
+            'description'=>$validated['description'],
+            'html_content' => $validated['HTML'],
         ]);
 
         return response()->json([
             'message' => 'OMR Sheet created successfully',
-            'omr_sheet' => $omrSheet,
         ]);
     }
+
 }
