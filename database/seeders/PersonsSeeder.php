@@ -5,41 +5,27 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\PersonDictionary;
 use App\Models\PersonDictionaryAccess;
+use App\Models\User; // Don't forget to import the User model
+use Illuminate\Support\Facades\Hash; // Import the Hash facade for password hashing
 
 class PersonsSeeder extends Seeder
 {
     public function run()
     {
-        // Create some dictionaries
-        $dict1 = PersonDictionary::create([
-            'name' => 'Grade 10 - Section A',
-            'description' => 'This is the Grade 10 Section A group.',
-            'member_count' => 30,
+        // Create a default user
+        $user1 = User::create([
+            'name' => 'Justine',
+            'email' => 'judealmaden2045@gmail.com',
+            'password' => Hash::make('Password123'), // Always hash passwords!
+            'email_verified_at' => now(), // Optionally set email as verified
         ]);
 
-        $dict2 = PersonDictionary::create([
-            'name' => 'Grade 11 - Section B',
-            'description' => 'This is the Grade 11 Section B group.',
-            'member_count' => 25,
-        ]);
-
-        // Create access entries (adjust user_id to your actual users)
-        PersonDictionaryAccess::create([
-            'user_id' => 1,
-            'person_dictionary_id' => $dict1->id,
-            'access_level' => 'admin',
-        ]);
-
-        PersonDictionaryAccess::create([
-            'user_id' => 2,
-            'person_dictionary_id' => $dict1->id,
-            'access_level' => 'read',
-        ]);
-
-        PersonDictionaryAccess::create([
-            'user_id' => 1,
-            'person_dictionary_id' => $dict2->id,
-            'access_level' => 'write',
+        // You can create another user if needed for testing access levels
+        $user2 = User::create([
+            'name' => 'Test User',
+            'email' => 'test@example.com',
+            'password' => Hash::make('password'),
+            'email_verified_at' => now(),
         ]);
     }
 }

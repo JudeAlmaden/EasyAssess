@@ -13,17 +13,15 @@ return new class extends Migration
     {
         Schema::create('assessments', function (Blueprint $table) {
             $table->id();
-            
-            // Foreign keys
-            $table->foreignId('person_dictionary_id')->constrained('person_dictionaries')->onDelete('cascade');
-            $table->foreignId('omr_sheet_id')->constrained('omr_sheets')->onDelete('cascade');
-            
-            $table->string('title')->nullable();               
-            $table->text('description')->nullable();          
-            $table->json('correct_answers')->nullable();
-            $table->json('results')->nullable();                
 
-            $table->foreignId('created_by')->nullable()->constrained('users')->onDelete('set null');
+            // Make foreign keys nullable
+            $table->string('title')->nullable();
+            $table->text('description')->nullable();
+
+            $table->json('answer_key')->nullable();
+            $table->json('answers')->nullable();
+            $table->json('person_dictionary_snapshot')->nullable();
+            $table->json('omr_sheet_snapshot')->nullable();
 
             $table->timestamps();
         });

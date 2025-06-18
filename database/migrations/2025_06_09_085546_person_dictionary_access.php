@@ -17,6 +17,7 @@ return new class extends Migration
         $table->foreignId('person_dictionary_id')->constrained('person_dictionaries')->onDelete('cascade'); // assessment/dictionary they can access
         $table->string('access_level')->default('read'); // e.g. read, write, admin
         $table->timestamps();
+        
         $table->unique(['user_id', 'person_dictionary_id']); // prevent duplicate access entries
     });
 

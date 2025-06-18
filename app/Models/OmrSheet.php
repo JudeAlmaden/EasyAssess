@@ -13,15 +13,19 @@ class OmrSheet extends Model
     protected $fillable = [
         'owner_id',
         'title',
-        'paper_size',
         'description',
         'json_data',
-        'html_content',
     ];
 
-    protected $casts = [
-        'json_data' => 'array',
-    ];
+    // {
+    //   "OMRSheet": {
+    //     "HTML": "<div class='...'>...</div>",
+    //     "Format": "Letter",
+    //     "MCQ": [...],
+    //     "Freeform": [],
+    //     "Blanks": []
+    //   }
+    // }
 
     /**
      * Relationships

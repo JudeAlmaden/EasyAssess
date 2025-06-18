@@ -8,11 +8,7 @@ import { Input } from '../../components/ui/input';
 import { Button } from '../../components/ui/button';
 import { Card, CardContent, CardHeader, } from '@/components/ui/card';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow, } from '@/components/ui/table';
-import { BaseModal } from '../../components/ui/modal'
 import { Link } from '@inertiajs/vue3';
-
-const showModal = ref(false)
-const QuestionnaireName = ref('')
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -34,9 +30,9 @@ interface OmrSheet {
 const Questionnaires = ref<OmrSheet[]>([])
 
 //Queries
-async function fetchQuestionnaires() {
+async function getOmrSheets() {
     try {
-        const res = await fetch('api/questionnaires/get', {
+        const res = await fetch('api/omr-sheets/get', {
             headers: {
                 'Accept': 'application/json',
             },
@@ -55,7 +51,7 @@ async function fetchQuestionnaires() {
 
 //Get initial data
 onMounted(() => {
-    fetchQuestionnaires();
+    getOmrSheets();
 });
 
 function formatDate(iso: string) {
@@ -101,7 +97,7 @@ function formatDate(iso: string) {
                                 <TableCell class="text-right w-1/4">{{ formatDate(Questionnaire.created_at) }}</TableCell>
                                 <TableCell class="text-center w-1/4">
                                     <div class="flex justify-center items-center">
-                                        <Link :href="route('questionnaire.view', [Questionnaire.id])" target="_blank"
+                                        <Link :href="route('omr_sheet.view', [Questionnaire.id])" target="_blank"
                                             class="px-3 py-1 text-sm w-32 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors duration-150 flex items-center justify-center gap-1 shadow-md">
                                             View
                                              <Eye class="w-4 h-4" />
@@ -116,23 +112,3 @@ function formatDate(iso: string) {
         </div>
     </AppLayout>
 </template>
-<style>
-/* Modal transition animations */
-.modal-fade-enter-active,
-.modal-fade-leave-active {
-    transition: opacity 0.3s ease;
-}
-
-.modal-fade-enter-from,
-.modal-fade-leave-to {
-    opacity: 0;
-}
-
-/* Focus styles for better accessibility */
-button:focus,
-input:focus,
-textarea:focus {
-    outline: none;
-    ring: 2px;
-}
-</style>

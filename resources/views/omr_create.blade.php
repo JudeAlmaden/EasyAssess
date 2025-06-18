@@ -232,6 +232,7 @@
         const saveTitleInput = $('#saveTitle');
         const saveDescriptionInput = $('#saveDescription');
         const cancelSaveBtn = $('#cancelSaveBtn');
+        const createSheetUrl = "{{ route('omr_sheet.create') }}";
 
         const genericAlertModal = $('#genericAlertModal');
         const alertModalTitle = $('#alertModalTitle');
@@ -312,10 +313,11 @@
             saveForm[0].reset(); // Clear form fields
         }
 
-        function convertGridElementsToOMRSheetJson(elements, canvasHtmlContent) {
+        function storeCanvasDataToJson(elements, canvasHtmlContent) {
         const omrSheet = {
             "OMRSheet": {
-                "documentData": canvasHtmlContent || "<!-- No HTML content provided -->", // Placeholder or actual HTML
+                "HTML": canvasHtmlContent || "<!-- No HTML content provided -->", // Placeholder or actual HTML
+                "Format":canvas.canvasType,
                 "MCQ": [],
                 "Freeform": [],
                 "Blanks": []
@@ -401,12 +403,12 @@
             const description = saveDescriptionInput.val();
             const finalPaper = canvas.finalLayout;
             const elements = canvas.grid.gridElements;
-            const jsonData = convertGridElementsToOMRSheetJson(elements, "finalPaper");
+            const jsonData = storeCanvasDataToJson(elements, finalPaper);
 
             try {
                 // 3. Submit data to API
                 const csrfToken = getCsrfToken();
-                const res = await fetch('/api/questionnaires/create', {
+                const res = await fetch(createSheetUrl, {
                     method: 'POST',
                     headers: {
                         'Accept': 'application/json',
@@ -416,9 +418,7 @@
                     credentials: 'include',
                     body: JSON.stringify({
                         title: title,
-                        paper_size: canvas.canvasType,
                         description: description,
-                        HTML: finalPaper,
                         fileJSON: jsonData
                     })
                 });
@@ -1763,8 +1763,8 @@
                 </div>
             `);
 
-            $("#section-name").on("change", (event) => {
-                this.sectionName = event.target.value
+            $("#header-name").on("change", (event) => {
+                this.headerText = event.target.value
                 gridItem.parentGrid.renderGridItems()
             });
 
@@ -1785,6 +1785,7 @@
 
             $("#section-name").on("change", (event) => {
                 this.sectionName = event.target.value
+                this.headerText = event.target.value
                 gridItem.parentGrid.renderGridItems()
             });
         }

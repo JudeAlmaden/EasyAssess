@@ -4,6 +4,7 @@ import { defineEmits, defineProps } from 'vue'
 const props = defineProps({
   modelValue: { type: Boolean, required: true },
   title: { type: String, default: 'Modal Title' },
+  showFooter: { type: Boolean, default: true }
 })
 
 const emit = defineEmits(['update:modelValue', 'confirm', 'cancel'])
@@ -58,7 +59,7 @@ function confirmModal() {
           </div>
 
           <!-- Footer -->
-          <div
+          <div v-if="showFooter"
             class="px-6 py-4 bg-gray-50 dark:bg-gray-900 border-t border-gray-100 dark:border-gray-700 flex justify-end space-x-3"
           >
             <button
@@ -81,12 +82,22 @@ function confirmModal() {
 </template>
 
 <style>
+/* Modal transition animations */
 .modal-fade-enter-active,
 .modal-fade-leave-active {
-  transition: opacity 0.3s;
+    transition: opacity 0.3s ease;
 }
+
 .modal-fade-enter-from,
 .modal-fade-leave-to {
-  opacity: 0;
+    opacity: 0;
+}
+
+/* Focus styles for better accessibility */
+button:focus,
+input:focus,
+textarea:focus {
+    outline: none;
+    ring: 2px;
 }
 </style>

@@ -13,13 +13,17 @@ return new class extends Migration
     {
         Schema::create('person_dictionaries', function (Blueprint $table) {
             $table->id();
-            $table->string('name'); // Group name (e.g. "Grade 10 - Section A")
-            $table->text('description')->nullable(); // Optional description
-            $table->unsignedInteger('member_count')->default(0); // Number of people in the group
-            $table->timestamps(); // created_at and updated_at
+            $table->string('name'); 
+            $table->text('description')->nullable();  
+            $table->json('persons_data')->nullable();
+            $table->unsignedInteger('member_count')->default(0);
+            $table->timestamps(); 
         });
     }
 
+    /**
+     * Reverse the migrations.
+     */
     public function down(): void
     {
         Schema::dropIfExists('person_dictionaries');

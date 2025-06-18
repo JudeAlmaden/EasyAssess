@@ -21,7 +21,14 @@
         class="bg-gradient-to-r mb-5 from-[#5b9bd5] to-[#4472c4] hover:from-[#4472c4] hover:to-[#5b9bd5] text-white font-bold py-3 px-4 rounded-xl w-full shadow-lg transition-all duration-150 outline-none focus:ring-2 focus:ring-[#5b9bd5] text-lg tracking-wide">
         Download PDF
     </button>
-    {!! $omrSheet->html_content !!}
+    @php
+        $decoded = json_decode($omrSheet->json_data, true); // decode as associative array
+    @endphp
+
+    @if(isset($decoded['OMRSheet']['HTML']))
+        {!! $decoded['OMRSheet']['HTML'] !!}
+    @endif
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
 </body>

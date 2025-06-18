@@ -15,6 +15,8 @@ class PersonDictionary extends Model
         'name',
         'description',
         'member_count',
+        'meta_columns',
+        'persons_data'
     ];
 
     /**
@@ -24,7 +26,7 @@ class PersonDictionary extends Model
      */
 
     // Example: Dictionary has many people (assuming a `persons` table exists)
-    public function people()
+    public function persons()
     {
         return $this->hasMany(Person::class);
     }

@@ -15,13 +15,13 @@ const mainNavItems: NavItem[] = [
     icon: LayoutGrid,
   },
   {
-    title: 'Dictionary',
+    title: 'Person Dictionary',
     href: '/dictionary',
     icon: FileText,
   },
   {
-    title: 'Questionnaires',
-    href: '/questionnaires',
+    title: 'OMR Sheets',
+    href: '/omr-sheets',
     icon: FileQuestion,
   },
   {

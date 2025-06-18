@@ -14,10 +14,6 @@ class Person extends Model
         'data',
     ];
 
-    // Cast the JSON column 'data' to an array automatically
-    protected $casts = [
-        'data' => 'array',
-    ];
 
     // Relationship to PersonDictionary
     public function personDictionary()

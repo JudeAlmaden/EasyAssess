@@ -18,8 +18,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
 
             // Define access levels — you can adjust these values as needed
-            $table->enum('access_level', ['view', 'edit', 'admin'])->default('view');
-
+            $table->enum('access_level', ['owner', 'viewer', 'admin'])->default('viewer');
             $table->timestamps();
 
             $table->unique(['assessment_id', 'user_id']);

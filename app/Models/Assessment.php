@@ -3,24 +3,24 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Assessment extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
         'person_dictionary_id',
         'omr_sheet_id',
         'title',
         'description',
-        'correct_answers',
-        'results',
-        'created_by',
+        'answer_key',
+        'answers',
+        'person_dictionary_snapshot',
+        'omr_sheet_snapshot',
     ];
 
-    protected $casts = [
-        'results' => 'array',
-        'correct_answers'=>'array'
-    ];
-
+    // Relationships
     public function personDictionary()
     {
         return $this->belongsTo(PersonDictionary::class);
