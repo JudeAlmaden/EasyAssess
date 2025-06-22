@@ -3,6 +3,7 @@ import laravel from 'laravel-vite-plugin';
 import path from 'path';
 import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'vite';
+import mkcert from 'vite-plugin-mkcert'
 
 export default defineConfig({
     plugins: [
@@ -16,6 +17,7 @@ export default defineConfig({
             
             refresh: true,
         }),
+        // mkcert(),
         tailwindcss(),
         vue({
             template: {
@@ -26,6 +28,14 @@ export default defineConfig({
             },
         }),
     ],
+    server: {
+    host: '0.0.0.0',
+    port: 8880,
+    strictPort: true,
+    hmr: {
+        host: '192.168.1.121' 				
+    }
+    },
     define: {
         global: 'globalThis',
     },

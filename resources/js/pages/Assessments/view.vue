@@ -3,6 +3,8 @@ import { ref } from 'vue';
 import AppLayout from '@/layouts/AppLayout.vue';
 import AnswerKey from '@/components/AnswerKey.vue';
 import AssessmentDashboard from '@/components/AssessmentDashboard.vue';
+import type { BreadcrumbItem } from "@/types";
+
 
 const props = defineProps<{
   assessment: {
@@ -16,6 +18,14 @@ const props = defineProps<{
   };
   access_level: string;
 }>();
+
+const breadcrumbs: BreadcrumbItem[] = [
+  { title: "Assessment", href: "/assessments" },
+  {
+    title: props.assessment?.title ?? "Untitled Assessment",
+    href: `/assessment/${props.assessment?.id}`,
+  },
+];
 
 // Tab state
 const tabs = [
@@ -31,7 +41,7 @@ const activeTab = ref('Dashboard');
 </script>
 
 <template>
-  <AppLayout>
+  <AppLayout :breadcrumbs="breadcrumbs">
     <div class="p-6 space-y-6">
       <!-- Tabs -->
       <div class="flex space-x-4 border-b">
@@ -52,7 +62,8 @@ const activeTab = ref('Dashboard');
 
       <!-- Tab Contents -->
       <div v-if="activeTab === 'Dashboard'">
-        <AssessmentDashboard></AssessmentDashboard>
+        <AssessmentDashboard
+        :assessment="props.assessment"></AssessmentDashboard>
       </div>
 
       <div v-else-if="activeTab === 'Answer Key'">

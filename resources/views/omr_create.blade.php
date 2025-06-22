@@ -346,11 +346,13 @@
                         });
                         break;
                     case 'Freeform':
-                        omrSheet.OMRSheet.Freeform.push({
-                            id: `freeform_block_${freeformCounter++}`,
-                            ...commonProps,
-                            Instruction: item.gridComponent.sectionName || '' 
-                        });
+                        if (item.gridComponent.included) {
+                            omrSheet.OMRSheet.Freeform.push({
+                                id: `freeform_block_${freeformCounter++}`,
+                                ...commonProps,
+                                Instruction: item.gridComponent.sectionName || ''
+                            });
+                        }
                         break;
                     case 'Blanks':
                         omrSheet.OMRSheet.Blanks.push({
@@ -392,6 +394,7 @@
         cancelSaveBtn.on('click', hideSaveModal);
         sidebarToggle.on('click', toggleSidebar);
         alertModalCloseBtn.on('click', hideAlert);
+
         saveForm.on('submit', async function (e) {
             e.preventDefault(); // Prevent default form submission
             
@@ -1210,7 +1213,7 @@
             this.visibleRows = 0;
 
             // Row and font settings
-            this.rowHeight = 30 * this.multiplier;
+            this.rowHeight = 33 * this.multiplier;
             this.marginBottom = 3 * this.multiplier;
             this.fontSizeHeader = 10 * this.multiplier;
             this.fontsizeNumber = 8 * this.multiplier;
@@ -1386,6 +1389,7 @@
 
             $("#section-name").on("change", (event) => {
                 this.sectionName = event.target.value
+                this.headerText = event.target.value
                 gridItem.parentGrid.renderGridItems()
             });
             $("#rows-to-show").on("change", (event) => {
@@ -1409,6 +1413,7 @@
             this.headerText = null;
             this.sectionName = "Freeform";
             this.text = "";
+            this.included= false;
             this.fontSize = 10 * this.multiplier; // Default font size
         }
 
@@ -1479,57 +1484,75 @@
             $parentElement.append($element);
         }
 
-        attachController(gridItem) {
-            super.attachController(gridItem)
+        attachController(gridSlot) {
+            super.attachController(gridSlot)
             const $controllerDiv = $("#ElementControls");
-
-            $controllerDiv.append(`
-            <div style="margin-bottom: 10px; background: white; border-radius: 6px; padding: 6px 10px;">
-            <div style="display: flex; align-items: center; margin-bottom: 4px;">
-                <label style="font-size: 12px; color: #333; min-width: 110px;">Text</label>
-            </div>
-            <div>
-                <textarea
-                id="header-text"
-                style="width: 100%; padding: 3px 6px; border: 1px solid #ccc; border-radius: 4px; font-size: 12px; color: #222; background: #fafafa; resize: vertical;"
-                rows="2"
-                >${this.text !== null ? this.text : ""}</textarea>
-            </div>
-            </div>
-            `)
-
-            const sections = ["Freeform A", "Freeform B", "Freeform C", "Freeform D", "Freeform E"];
-            $controllerDiv.append(`
-                <div style="margin-bottom: 10px; background: white; border-radius: 6px; padding: 6px 10px;">
-                    <div style="display: flex; align-items: center; margin-bottom: 4px;">
-                        <label style="font-size: 12px; color: #333; min-width: 110px;">Section</label>
+                // Text input
+                $controllerDiv.append(`
+                    <div style="margin-bottom: 10px; background: white; border-radius: 6px; padding: 6px 10px;">
+                        <div style="display: flex; align-items: center; margin-bottom: 4px;">
+                            <label style="font-size: 12px; color: #333; min-width: 110px;">Text</label>
+                        </div>
+                        <div>
+                            <textarea
+                                id="header-text"
+                                style="width: 100%; padding: 3px 6px; border: 1px solid #ccc; border-radius: 4px; font-size: 12px; color: #222; background: #fafafa; resize: vertical;"
+                                rows="2"
+                            >${this.text !== null ? this.text : ""}</textarea>
+                        </div>
                     </div>
-                    <div>
-                        <select
-                            id="section-name"
-                            style="width: 100%; padding: 3px 6px; border: 1px solid #ccc; border-radius: 4px; font-size: 12px; color: #222; background: #fafafa;"
-                        >
-                            ${sections.map(suggestion => `
-                                <option value="${suggestion}" ${this.sectionName === suggestion ? 'selected' : ''}>
-                                    ${suggestion}
-                                </option>
-                            `).join('')}
-                        </select>
+                `);
+
+                // Section select
+                const sections = ["Freeform A", "Freeform B", "Freeform C", "Freeform D", "Freeform E"];
+                $controllerDiv.append(`
+                    <div style="margin-bottom: 10px; background: white; border-radius: 6px; padding: 6px 10px;">
+                        <div style="display: flex; align-items: center; margin-bottom: 4px;">
+                            <label style="font-size: 12px; color: #333; min-width: 110px;">Section</label>
+                        </div>
+                        <div>
+                            <select
+                                id="section-name"
+                                style="width: 100%; padding: 3px 6px; border: 1px solid #ccc; border-radius: 4px; font-size: 12px; color: #222; background: #fafafa;"
+                            >
+                                ${sections.map(suggestion => `
+                                    <option value="${suggestion}" ${this.sectionName === suggestion ? 'selected' : ''}>
+                                        ${suggestion}
+                                    </option>
+                                `).join('')}
+                            </select>
+                        </div>
                     </div>
-                </div>
-            `);
+                `);
 
-            $("#section-name").on("change", (event) => {
-                this.sectionName = event.target.value
-                gridItem.parentGrid.renderGridItems()
-            });
+                // Include in recording checkbox
+                $controllerDiv.append(`
+                    <div style="margin-bottom: 10px; background: white; border-radius: 6px; padding: 6px 10px;">
+                        <label style="display: flex; align-items: center; font-size: 12px; color: #333;">
+                            <input type="checkbox" id="include-recording" style="margin-right: 6px;" ${this.includeInRecording ? 'checked' : ''}>
+                            Include in recording?
+                        </label>
+                    </div>
+                `);
 
-            $("#header-text").on("change", (event) => {
-                this.text = event.target.value
-                gridItem.parentGrid.renderGridItems()
-            });
-        }
+                // Event bindings
+                $("#section-name").on("change", (event) => {
+                    this.sectionName = event.target.value;
+                    gridItem.parentGrid.renderGridItems();
+                });
+
+                $("#header-text").on("change", (event) => {
+                    this.text = event.target.value;
+                    gridItem.parentGrid.renderGridItems();
+                });
+
+                $("#include-recording").on("change", (event) => {
+                    this.included = event.target.checked;
+                    gridItem.parentGrid.renderGridItems(); // Optional if UI needs re-rendering
+                });
+            }
     }
+
     class MCQ extends GridComponent {
         constructor(multiplier) {
             super(multiplier);
@@ -1544,7 +1567,7 @@
             this.visibleChoices = 0;
 
             // Row height calculations
-            this.bubbleSize = 30 * this.multiplier;
+            this.bubbleSize = 33 * this.multiplier;
             this.marginBottom = 3 * this.multiplier;
             this.rowHeight = this.bubbleSize + this.marginBottom;
 

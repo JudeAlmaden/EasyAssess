@@ -36,7 +36,8 @@
         <div class="inputoutput">
             <div style="text-align: center; margin-bottom: 20px;">
                 <p>Before Image Processing</p>
-                <img id="imageSrc" alt="No Image" src="TestImages/Shaded2.jpg" />
+                <img id="imageSrc" alt="No Image" src="{{ asset('images/Shaded2.jpg') }}" />
+
             </div>
             <div style="text-align: center;">
                 <p class="caption">After Processing</p>
@@ -110,16 +111,31 @@
 
     <script type="text/javascript">
         let imgElement = document.getElementById('imageSrc');
-        const numItemsPerBox = [9, 9];
-        const numChoicesPerBox = [4, 4, 4, 4, 4, 4];
-        const answers = [
-            [1, 2, 3, 1, 1, 1, 1, 1, 1, 1],
-            [2, 3, 1, 4, 1, 1, 1, 1, 1, 1],
-            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            [2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
-            [3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
-            [4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
-        ];
+        const rawAnswerKey = @json($assessment->answer_key);
+
+        const numItemsPerBox = [];
+        const numChoicesPerBox = [];
+        const answers = [];
+
+        for (const blockId in rawAnswerKey) {
+            const block = rawAnswerKey[blockId];
+
+            const items = block.answers || {};
+            const itemAnswers = [];
+
+            // Push number of items
+            numItemsPerBox.push(Object.keys(items).length);
+
+            // Push number of choices (default to 4 if missing)
+            numChoicesPerBox.push(block.numberOfChoices ?? 4);
+
+            for (const key of Object.keys(items)) {
+                itemAnswers.push(items[key]);
+            }
+
+            answers.push(itemAnswers);
+        }
+
         const numberOfOmrBoxes = numItemsPerBox.length;
         const DESIGN_BUBBLE_DIAMETER = 33;
         const DESIGN_BUBBLE_RADIUS = DESIGN_BUBBLE_DIAMETER / 2;
@@ -331,16 +347,16 @@
                     };
 
                     if (shadedCount > 1) {
-                        // Orange – Multiple bubbles shaded in one row (ambiguous answer)
+                        // Orange – Multiple shaded (ambiguous)
                         bubble.isCorrect = false;
                         drawCircle(new cv.Scalar(240, 165, 0, 255), 2);
-                    } else if (typeof answers !== 'undefined' && answers[answerIndex][rowIndex] === colIndex + 1) {
+                    } else if (typeof answers !== 'undefined' && answers[answerIndex][rowIndex]?.includes(colIndex + 1)) {
                         if (bubble.shaded) {
-                            // Green – Correct answer and shaded
+                            // Green – Correct and shaded
                             bubble.isCorrect = true;
                             drawCircle(new cv.Scalar(50, 205, 50, 255), 2);
                         } else {
-                            // Dashed Green Ellipse – Correct answer but not shaded (missed)
+                            // Dashed Green – Correct but missed
                             for (let angle = 0; angle < 360; angle += 30) {
                                 cv.ellipse(
                                     roi,
@@ -349,24 +365,24 @@
                                     0,
                                     angle,
                                     angle + 10,
-                                    new cv.Scalar(50, 205, 50, 255), // Green
+                                    new cv.Scalar(50, 205, 50, 255),
                                     2
                                 );
                             }
                         }
                     } else {
                         if (bubble.shaded) {
-                            // Red-Orange – Shaded but incorrect
+                            // Red-Orange – Wrong and shaded
                             drawCircle(new cv.Scalar(255, 69, 0, 255), 2);
                         } else {
-                            // Light Blue – Unshaded and not the correct answer
+                            // Light Blue – Unshaded, not the correct answer
                             drawCircle(new cv.Scalar(100, 150, 255, 255), 2);
                         }
                     }
                 }
             }
         }
-                
+                    
         function groupBubblesIntoRows(bubbles, bubblesPerRow, numberOfExpectedRows, rowThreshold = 20) {
             // Step 1: Group into rows based on y-axis (cy)
             let rowGroups = [];
@@ -507,6 +523,17 @@
 </body>
 
 </html>
+
+ <script>
+    const answerKey = @json($assessment->answer_key);
+    const dictionarySnapshot = @json($assessment->person_dictionary_snapshot);
+    const omrSnapshot = @json($assessment->omr_sheet_snapshot);
+
+    console.log("Answer Key:", answerKey);
+    console.log("Person Dictionary:", dictionarySnapshot);
+    console.log("OMR Sheet:", omrSnapshot);
+</script>
+
 
 
 <script>

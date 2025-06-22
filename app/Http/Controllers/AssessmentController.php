@@ -46,8 +46,6 @@ class AssessmentController extends Controller
         ]);
     }
 
-
-
     public function create(Request $request)
     {
         $user = $request->user();
@@ -83,16 +81,16 @@ class AssessmentController extends Controller
                     $defaultAnswerKey[$blockId] = [
                         'x' => $block['x'] ?? 0,
                         'y' => $block['y'] ?? 0,
+                        'numberOfChoices' => $block['choices'] ?? 4, // Add this line
                         'answers' => [],
                     ];
 
                     for ($item = 1; $item <= $block['items']; $item++) {
-                        // Set default answer to [0]
+                        // Default to [0] meaning "nothing selected"
                         $defaultAnswerKey[$blockId]['answers']["$item"] = [0];
                     }
                 }
             }
-
         }
 
         // Load and snapshot the person dictionary
@@ -134,7 +132,6 @@ class AssessmentController extends Controller
     }
 
 
-
     function getAssessments(Request $request) {
         $user = $request->user();
         $perPage = $request->input('per_page', 10);
@@ -147,15 +144,14 @@ class AssessmentController extends Controller
         return response()->json($assessments);
     }
 
-    public function saveAnswer(Request $request, $id){
+    public function saveAnswer(Request $request, $id)
+    {
         $user = $request->user();
 
-        // Validate structure of incoming data
         $validated = $request->validate([
             'answer_key' => 'required|array',
         ]);
 
-        // Check user access
         $access = AssessmentAccess::where('user_id', $user->id)
             ->where('assessment_id', $id)
             ->first();
@@ -164,11 +160,60 @@ class AssessmentController extends Controller
             return response()->json(['error' => 'Unauthorized.'], 403);
         }
 
-        // Update the assessment
         $assessment = Assessment::findOrFail($id);
-        $assessment->answer_key = json_encode($validated['answer_key']);
+
+        // Decode the snapshot to access MCQ definitions
+        $snapshot = json_decode($assessment->omr_sheet_snapshot, true);
+        $mcqBlocks = collect($snapshot['OMRSheet']['MCQ'] ?? [])->keyBy('id');
+
+        $enrichedAnswerKey = [];
+
+        foreach ($validated['answer_key'] as $blockId => $blockData) {
+            if (!isset($blockData['answers'])) {
+                continue;
+            }
+
+            $choicesCount = $mcqBlocks[$blockId]['choices'] ?? 4;
+
+            $enrichedAnswerKey[$blockId] = [
+                'x' => $blockData['x'] ?? 0,
+                'y' => $blockData['y'] ?? 0,
+                'numberOfChoices' => $choicesCount,
+                'answers' => [],
+            ];
+
+            foreach ($blockData['answers'] as $item => $values) {
+                $enrichedAnswerKey[$blockId]['answers'][(int)$item] = is_array($values) ? $values : [0];
+            }
+        }
+
+        // Save enriched answer key
+        $assessment->answer_key = json_encode($enrichedAnswerKey);
         $assessment->save();
 
-        return response()->json(['message' => 'Answer key saved successfully.']);
+        return response()->json(['message' => 'Answer key saved with choices count.']);
     }
+
+    //Recording asnwers
+    public function recording(Request $request, $id)
+    {
+    $user = $request->user();
+
+    $access = AssessmentAccess::with('assessment')
+        ->where('user_id', $user->id)
+        ->where('assessment_id', $id)
+        ->firstOrFail();
+
+    $assessment = $access->assessment;
+
+    // Decode JSON columns so Blade can use them directly
+    $assessment->answer_key = json_decode($assessment->answer_key, true);
+    $assessment->person_dictionary_snapshot = json_decode($assessment->person_dictionary_snapshot, true);
+    $assessment->omr_sheet_snapshot = json_decode($assessment->omr_sheet_snapshot, true);
+
+    return view('camera', [
+        'assessment' => $assessment,
+    ]);
+}
+
 }

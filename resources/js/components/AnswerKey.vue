@@ -1,10 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 
-defineExpose({
-  getAnswerKey: () => answerKey.value
-});
-
 const props = defineProps<{
   assessment: {
     id: number;

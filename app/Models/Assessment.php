@@ -10,8 +10,6 @@ class Assessment extends Model
     use HasFactory;
 
     protected $fillable = [
-        'person_dictionary_id',
-        'omr_sheet_id',
         'title',
         'description',
         'answer_key',

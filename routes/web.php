@@ -39,5 +39,11 @@ Route::get('api/user/assessments/get', [AssessmentController::class, 'getAssessm
 Route::post('api/assessments/create', [AssessmentController::class, 'create'])->middleware(['auth', 'verified'])->name('assessment.create');
 Route::post('/api/assessments/{id}/save-answer-key', [AssessmentController::class, 'saveAnswer'])->middleware(['auth', 'verified'])->name('answers.save');
 
+
+Route::get('/assessments/{id}/record', [AssessmentController::class, 'recording'])->middleware(['auth', 'verified'])->name('assessment.record.view');
+
+Route::get('/camera', [AssessmentController::class, 'recording'])->name('assessment.record.view');
+
+
 require __DIR__ . '/settings.php';
 require __DIR__ . '/auth.php';
