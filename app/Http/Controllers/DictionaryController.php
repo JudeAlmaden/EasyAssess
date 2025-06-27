@@ -80,6 +80,22 @@ class DictionaryController extends Controller
         return response()->json(['message' => 'Dictionary updated successfully.']);
     }
 
+    public function delete(Request $request)
+    {
+        $request->validate([
+            'id' => 'required|exists:person_dictionaries,id'
+        ]);
+
+        DB::transaction(function () use ($request) {
+            $dictionary = PersonDictionary::findOrFail($request->id);
+            $dictionary->delete();
+        });
+
+        return response()->json([
+            'message' => 'Dictionary deleted successfully'
+        ]);
+    }
+
     public function getUserDictionaries(Request $request)
     {
         $user = $request->user();

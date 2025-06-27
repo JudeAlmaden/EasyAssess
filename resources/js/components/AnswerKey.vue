@@ -115,8 +115,7 @@ async function saveAnswerKey() {
         }
       }
       
-    
-
+  
     transformedKey[blockId] = {
       x: block.x,
       y: block.y,
@@ -139,6 +138,7 @@ async function saveAnswerKey() {
 
     if (!res.ok) throw new Error('Save failed');
     alert('Answer key saved!');
+    window.location.reload()
   } catch (err) {
     console.error(err);
     alert('Error saving answer key.');
@@ -153,10 +153,10 @@ async function saveAnswerKey() {
       v-for="(blocks, sectionName) in groupedSectionsWithGlobalItems"
       :key="sectionName"
     >
-      <h2 class="text-xl font-bold text-gray-800 mb-4">{{ sectionName }}</h2>
+      <h2 class="text-xl font-bold text-foreground mb-4">{{ sectionName }}</h2>
 
-      <table class="min-w-full table-auto border border-gray-300 shadow-sm rounded-md overflow-hidden">
-        <thead class="bg-gray-100">
+      <table class="min-w-full table-auto border border-accent shadow-sm rounded-md overflow-hidden">
+        <thead class="bg-accent">
           <tr>
             <th class="border px-4 py-2 text-left">Item #</th>
             <th

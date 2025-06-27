@@ -17,10 +17,11 @@ class OMRController extends Controller
         $omrSheet = OmrSheet::where('id', $id)
             ->where('owner_id', $user->id)
             ->firstOrFail();
+
         return view('omr_sheet_view', compact('omrSheet'));
     }
 
-    function create() {
+    function createView() {
         return view('omr_create');
     }
     function getUserOMRSheets(Request $request){
@@ -51,4 +52,19 @@ class OMRController extends Controller
         ]);
     }
 
+    function delete(Request $request)
+    {
+        $request->validate([
+            'id' => 'required|integer|exists:omr_sheets,id',
+        ]);
+
+        $omrSheet = OmrSheet::findOrFail($request->id);
+        if ($omrSheet->owner_id !== $request->user()->id) {
+            return response()->json(['message' => 'Unauthorized'], 403);
+        }
+
+        $omrSheet->delete();
+
+        return response()->json(['message' => 'OMR Sheet deleted successfully']);
+    }
 }

@@ -11,20 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('assessment_access', function (Blueprint $table) {
+        Schema::create('assessment_share_codes', function (Blueprint $table) {
             $table->id();
 
             $table->foreignId('assessment_id')->constrained('assessments')->onDelete('cascade');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
 
-            $table->enum('access_level', ['owner', 'viewer', 'admin'])->default('viewer');
-
-            // New column to indicate if the access is still active/open
-            $table->boolean('is_open')->default(true);
+            $table->string('code')->unique(); // Share code
             $table->timestamp('expires_at')->nullable();
+            $table->boolean('enabled')->default(true); // ✅ Added enabled flag
 
             $table->timestamps();
-            $table->unique(['assessment_id', 'user_id']);
         });
     }
 
@@ -33,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('assessment_access');
+        Schema::dropIfExists('assessment_share_codes');
     }
 };
