@@ -1,0 +1,1591 @@
+{
+	"meta": {
+		"authors": [
+			"David Haz"
+		],
+		"bugs": "https://github.com/DavidHDev/vue-bits/issues",
+		"description": "An open source collection of animated, interactive & fully customizable Vue components for building stunning, memorable user interfaces.",
+		"homepage": "https://vue-bits.dev",
+		"repository": "https://github.com/DavidHDev/vue-bits",
+		"tags": [
+			"vue",
+			"javascript",
+			"components",
+			"web",
+			"vuejs",
+			"css-animations",
+			"component-library",
+			"ui-components",
+			"3d",
+			"ui-library",
+			"tailwind",
+			"tailwindcss",
+			"components",
+			"components-library"
+		]
+	},
+	"categories": [
+		{
+			"name": "Animations",
+			"blocks": [
+				{
+					"name": "AnimatedContent",
+					"directory": "src/content/Animations/AnimatedContent",
+					"category": "Animations",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"AnimatedContent.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"gsap@^3.13.0"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "BlobCursor",
+					"directory": "src/content/Animations/BlobCursor",
+					"category": "Animations",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"BlobCursor.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"gsap@^3.13.0"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "ClickSpark",
+					"directory": "src/content/Animations/ClickSpark",
+					"category": "Animations",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"ClickSpark.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "CountUp",
+					"directory": "src/content/Animations/CountUp",
+					"category": "Animations",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"CountUp.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "Crosshair",
+					"directory": "src/content/Animations/Crosshair",
+					"category": "Animations",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"Crosshair.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"gsap@^3.13.0"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "Cubes",
+					"directory": "src/content/Animations/Cubes",
+					"category": "Animations",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"Cubes.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"gsap@^3.13.0"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "FadeContent",
+					"directory": "src/content/Animations/FadeContent",
+					"category": "Animations",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"FadeContent.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "GlareHover",
+					"directory": "src/content/Animations/GlareHover",
+					"category": "Animations",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"GlareHover.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "ImageTrail",
+					"directory": "src/content/Animations/ImageTrail",
+					"category": "Animations",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"ImageTrail.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"gsap@^3.13.0"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "Magnet",
+					"directory": "src/content/Animations/Magnet",
+					"category": "Animations",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"Magnet.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "MagnetLines",
+					"directory": "src/content/Animations/MagnetLines",
+					"category": "Animations",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"MagnetLines.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "MetaBalls",
+					"directory": "src/content/Animations/MetaBalls",
+					"category": "Animations",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"MetaBalls.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"ogl@^1.0.11"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "MetallicPaint",
+					"directory": "src/content/Animations/MetallicPaint",
+					"category": "Animations",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"MetallicPaint.vue",
+						"parseImage.ts"
+					],
+					"localDependencies": [],
+					"dependencies": [],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "Noise",
+					"directory": "src/content/Animations/Noise",
+					"category": "Animations",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"Noise.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "PixelTransition",
+					"directory": "src/content/Animations/PixelTransition",
+					"category": "Animations",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"PixelTransition.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"gsap@^3.13.0"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "Ribbons",
+					"directory": "src/content/Animations/Ribbons",
+					"category": "Animations",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"Ribbons.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"ogl@^1.0.11"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "ShapeBlur",
+					"directory": "src/content/Animations/ShapeBlur",
+					"category": "Animations",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"ShapeBlur.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"three@^0.178.0"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "SplashCursor",
+					"directory": "src/content/Animations/SplashCursor",
+					"category": "Animations",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"SplashCursor.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "StarBorder",
+					"directory": "src/content/Animations/StarBorder",
+					"category": "Animations",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"StarBorder.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "StickerPeel",
+					"directory": "src/content/Animations/StickerPeel",
+					"category": "Animations",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"StickerPeel.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"gsap@^3.13.0"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "TargetCursor",
+					"directory": "src/content/Animations/TargetCursor",
+					"category": "Animations",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"TargetCursor.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"gsap@^3.13.0"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				}
+			]
+		},
+		{
+			"name": "Backgrounds",
+			"blocks": [
+				{
+					"name": "Aurora",
+					"directory": "src/content/Backgrounds/Aurora",
+					"category": "Backgrounds",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"Aurora.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"ogl@^1.0.11"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "Balatro",
+					"directory": "src/content/Backgrounds/Balatro",
+					"category": "Backgrounds",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"Balatro.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"ogl@^1.0.11"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "Ballpit",
+					"directory": "src/content/Backgrounds/Ballpit",
+					"category": "Backgrounds",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"Ballpit.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"gsap@^3.13.0",
+						"three@^0.178.0"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "Beams",
+					"directory": "src/content/Backgrounds/Beams",
+					"category": "Backgrounds",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"Beams.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"three@^0.178.0"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "DarkVeil",
+					"directory": "src/content/Backgrounds/DarkVeil",
+					"category": "Backgrounds",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"DarkVeil.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"ogl@^1.0.11"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "Dither",
+					"directory": "src/content/Backgrounds/Dither",
+					"category": "Backgrounds",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"Dither.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"ogl@^1.0.11"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "DotGrid",
+					"directory": "src/content/Backgrounds/DotGrid",
+					"category": "Backgrounds",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"DotGrid.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"gsap@^3.13.0"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "FaultyTerminal",
+					"directory": "src/content/Backgrounds/FaultyTerminal",
+					"category": "Backgrounds",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"FaultyTerminal.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"ogl@^1.0.11"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "Galaxy",
+					"directory": "src/content/Backgrounds/Galaxy",
+					"category": "Backgrounds",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"Galaxy.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"ogl@^1.0.11"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "GridDistortion",
+					"directory": "src/content/Backgrounds/GridDistortion",
+					"category": "Backgrounds",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"GridDistortion.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"three@^0.178.0"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "GridMotion",
+					"directory": "src/content/Backgrounds/GridMotion",
+					"category": "Backgrounds",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"GridMotion.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"gsap@^3.13.0"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "Hyperspeed",
+					"directory": "src/content/Backgrounds/Hyperspeed",
+					"category": "Backgrounds",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"Hyperspeed.vue",
+						"HyperspeedPresets.ts"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"three@^0.178.0",
+						"postprocessing@^6.37.6"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "Iridescence",
+					"directory": "src/content/Backgrounds/Iridescence",
+					"category": "Backgrounds",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"Iridescence.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"ogl@^1.0.11"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "LetterGlitch",
+					"directory": "src/content/Backgrounds/LetterGlitch",
+					"category": "Backgrounds",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"LetterGlitch.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "LightRays",
+					"directory": "src/content/Backgrounds/LightRays",
+					"category": "Backgrounds",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"LightRays.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"ogl@^1.0.11"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "Lightning",
+					"directory": "src/content/Backgrounds/Lightning",
+					"category": "Backgrounds",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"Lightning.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "LiquidChrome",
+					"directory": "src/content/Backgrounds/LiquidChrome",
+					"category": "Backgrounds",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"LiquidChrome.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"ogl@^1.0.11"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "Orb",
+					"directory": "src/content/Backgrounds/Orb",
+					"category": "Backgrounds",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"Orb.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"ogl@^1.0.11"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "Particles",
+					"directory": "src/content/Backgrounds/Particles",
+					"category": "Backgrounds",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"Particles.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"ogl@^1.0.11"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "RippleGrid",
+					"directory": "src/content/Backgrounds/RippleGrid",
+					"category": "Backgrounds",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"RippleGrid.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"ogl@^1.0.11"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "Silk",
+					"directory": "src/content/Backgrounds/Silk",
+					"category": "Backgrounds",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"Silk.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"ogl@^1.0.11"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "Squares",
+					"directory": "src/content/Backgrounds/Squares",
+					"category": "Backgrounds",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"Squares.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "Threads",
+					"directory": "src/content/Backgrounds/Threads",
+					"category": "Backgrounds",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"Threads.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"ogl@^1.0.11"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "Waves",
+					"directory": "src/content/Backgrounds/Waves",
+					"category": "Backgrounds",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"Waves.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [],
+					"devDependencies": [],
+					"_imports_": {}
+				}
+			]
+		},
+		{
+			"name": "Components",
+			"blocks": [
+				{
+					"name": "AnimatedList",
+					"directory": "src/content/Components/AnimatedList",
+					"category": "Components",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"AnimatedList.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"motion-v@^1.5.0"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "BounceCards",
+					"directory": "src/content/Components/BounceCards",
+					"category": "Components",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"BounceCards.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"gsap@^3.13.0"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "CardSwap",
+					"directory": "src/content/Components/CardSwap",
+					"category": "Components",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"CardSwap.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"gsap@^3.13.0"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "Carousel",
+					"directory": "src/content/Components/Carousel",
+					"category": "Components",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"Carousel.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"motion-v@^1.5.0"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "ChromaGrid",
+					"directory": "src/content/Components/ChromaGrid",
+					"category": "Components",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"ChromaGrid.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"gsap@^3.13.0"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "CircularGallery",
+					"directory": "src/content/Components/CircularGallery",
+					"category": "Components",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"CircularGallery.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"ogl@^1.0.11"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "Counter",
+					"directory": "src/content/Components/Counter",
+					"category": "Components",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"Counter.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"motion-v@^1.5.0"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "DecayCard",
+					"directory": "src/content/Components/DecayCard",
+					"category": "Components",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"DecayCard.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"gsap@^3.13.0"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "Dock",
+					"directory": "src/content/Components/Dock",
+					"category": "Components",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"Dock.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"motion-v@^1.5.0"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "ElasticSlider",
+					"directory": "src/content/Components/ElasticSlider",
+					"category": "Components",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"ElasticSlider.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "FlowingMenu",
+					"directory": "src/content/Components/FlowingMenu",
+					"category": "Components",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"FlowingMenu.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"gsap@^3.13.0"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "FlyingPosters",
+					"directory": "src/content/Components/FlyingPosters",
+					"category": "Components",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"FlyingPosters.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"ogl@^1.0.11"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "Folder",
+					"directory": "src/content/Components/Folder",
+					"category": "Components",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"Folder.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "GlassIcons",
+					"directory": "src/content/Components/GlassIcons",
+					"category": "Components",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"GlassIcons.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "GlassSurface",
+					"directory": "src/content/Components/GlassSurface",
+					"category": "Components",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"GlassSurface.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "GooeyNav",
+					"directory": "src/content/Components/GooeyNav",
+					"category": "Components",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"GooeyNav.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "InfiniteScroll",
+					"directory": "src/content/Components/InfiniteScroll",
+					"category": "Components",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"InfiniteScroll.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"gsap@^3.13.0"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "MagicBento",
+					"directory": "src/content/Components/MagicBento",
+					"category": "Components",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"MagicBento.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"gsap@^3.13.0"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "Masonry",
+					"directory": "src/content/Components/Masonry",
+					"category": "Components",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"Masonry.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"gsap@^3.13.0"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "PixelCard",
+					"directory": "src/content/Components/PixelCard",
+					"category": "Components",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"PixelCard.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "ProfileCard",
+					"directory": "src/content/Components/ProfileCard",
+					"category": "Components",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"ProfileCard.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "RollingGallery",
+					"directory": "src/content/Components/RollingGallery",
+					"category": "Components",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"RollingGallery.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"motion-v@^1.5.0"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "ScrollStack",
+					"directory": "src/content/Components/ScrollStack",
+					"category": "Components",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"ScrollStack.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"lenis@^1.3.8"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "SpotlightCard",
+					"directory": "src/content/Components/SpotlightCard",
+					"category": "Components",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"SpotlightCard.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "Stack",
+					"directory": "src/content/Components/Stack",
+					"category": "Components",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"Stack.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"motion-v@^1.5.0"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "Stepper",
+					"directory": "src/content/Components/Stepper",
+					"category": "Components",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"Stepper.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"motion-v@^1.5.0"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "TiltedCard",
+					"directory": "src/content/Components/TiltedCard",
+					"category": "Components",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"TiltedCard.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"motion-v@^1.5.0"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				}
+			]
+		},
+		{
+			"name": "TextAnimations",
+			"blocks": [
+				{
+					"name": "AsciiText",
+					"directory": "src/content/TextAnimations/AsciiText",
+					"category": "TextAnimations",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"AsciiText.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"three@^0.178.0"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "BlurText",
+					"directory": "src/content/TextAnimations/BlurText",
+					"category": "TextAnimations",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"BlurText.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"motion-v@^1.5.0"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "CircularText",
+					"directory": "src/content/TextAnimations/CircularText",
+					"category": "TextAnimations",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"CircularText.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"motion-v@^1.5.0"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "CurvedLoop",
+					"directory": "src/content/TextAnimations/CurvedLoop",
+					"category": "TextAnimations",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"CurvedLoop.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "DecryptedText",
+					"directory": "src/content/TextAnimations/DecryptedText",
+					"category": "TextAnimations",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"DecryptedText.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "FallingText",
+					"directory": "src/content/TextAnimations/FallingText",
+					"category": "TextAnimations",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"FallingText.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"matter-js@^0.20.0"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "FuzzyText",
+					"directory": "src/content/TextAnimations/FuzzyText",
+					"category": "TextAnimations",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"FuzzyText.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "GlitchText",
+					"directory": "src/content/TextAnimations/GlitchText",
+					"category": "TextAnimations",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"GlitchText.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "GradientText",
+					"directory": "src/content/TextAnimations/GradientText",
+					"category": "TextAnimations",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"GradientText.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "RotatingText",
+					"directory": "src/content/TextAnimations/RotatingText",
+					"category": "TextAnimations",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"RotatingText.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"motion-v@^1.5.0"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "ScrambleText",
+					"directory": "src/content/TextAnimations/ScrambleText",
+					"category": "TextAnimations",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"ScrambleText.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"gsap@^3.13.0"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "ScrollFloat",
+					"directory": "src/content/TextAnimations/ScrollFloat",
+					"category": "TextAnimations",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"ScrollFloat.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"gsap@^3.13.0"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "ScrollReveal",
+					"directory": "src/content/TextAnimations/ScrollReveal",
+					"category": "TextAnimations",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"ScrollReveal.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"gsap@^3.13.0"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "ScrollVelocity",
+					"directory": "src/content/TextAnimations/ScrollVelocity",
+					"category": "TextAnimations",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"ScrollVelocity.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"gsap@^3.13.0"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "ShinyText",
+					"directory": "src/content/TextAnimations/ShinyText",
+					"category": "TextAnimations",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"ShinyText.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "SplitText",
+					"directory": "src/content/TextAnimations/SplitText",
+					"category": "TextAnimations",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"SplitText.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"gsap@^3.13.0"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "TextCursor",
+					"directory": "src/content/TextAnimations/TextCursor",
+					"category": "TextAnimations",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"TextCursor.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"motion-v@^1.5.0"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "TextPressure",
+					"directory": "src/content/TextAnimations/TextPressure",
+					"category": "TextAnimations",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"TextPressure.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "TextTrail",
+					"directory": "src/content/TextAnimations/TextTrail",
+					"category": "TextAnimations",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"TextTrail.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"three@^0.178.0"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "TextType",
+					"directory": "src/content/TextAnimations/TextType",
+					"category": "TextAnimations",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"TextType.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"gsap@^3.13.0"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "TrueFocus",
+					"directory": "src/content/TextAnimations/TrueFocus",
+					"category": "TextAnimations",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"TrueFocus.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [
+						"motion-v@^1.5.0"
+					],
+					"devDependencies": [],
+					"_imports_": {}
+				},
+				{
+					"name": "VariableProximity",
+					"directory": "src/content/TextAnimations/VariableProximity",
+					"category": "TextAnimations",
+					"tests": false,
+					"subdirectory": true,
+					"list": true,
+					"files": [
+						"VariableProximity.vue"
+					],
+					"localDependencies": [],
+					"dependencies": [],
+					"devDependencies": [],
+					"_imports_": {}
+				}
+			]
+		}
+	]
+}
